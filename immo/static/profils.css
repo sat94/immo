@@ -1,0 +1,29 @@
+body{
+    background-color: #1c326bee;
+    color: white;
+    font-size: 16px;
+    font-family:'Times New Roman', Times, serif
+}
+.profil{
+    font-style: 20px;
+}
+p{
+    display: flex;
+    justify-content: space-between;
+}
+.photo {
+    width: 20rem;
+    height: 25rem;
+    object-fit: cover;
+    max-width: 30rem;
+    filter:grayscale(60%);
+    transition: transform 0.5s;     
+}
+.top1{    
+    margin-top: 130px; 
+    margin-left: 70px;
+}
+.limite{
+    font-size: 24px;
+    padding-right: 100px;
+}

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load custom_tag %}
+{% load static %}
+
+{% block head %}    
+<link rel="stylesheet" href="{% static 'quitance.css' %}"> 
+{% endblock head %}
+
+{% block content %}
+<div class="top2">
+    <div class="row">
+    <div class="col-md-12 col-xl-4">
+        <div class="cards">        
+          <div class="card-body cardone">
+          <p class="card-text text-center" style="font-size:2.7rem;">Total appartements</p>          
+          <h4 class="card-title text-center">{{  Nbappart }}</h4>        
+          </div>
+        </div>
+    </div>
+    <div class="col-md-12 col-xl-4">
+      <div class="cards">        
+        <div class="card-body cardtwo">
+          <p class="card-text text-center" style="font-size:2.8rem;">Total locataires </p>          
+          <h4 class="card-title text-center">{{ Nbloca }}</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 col-xl-4">
+      <div class="cards">        
+        <div class="card-body cardthree">
+          <p class="card-text text-center" style="font-size:2.8rem;"> Appartements (Immo)</p>          
+          <h4 class="card-title text-center">{{ agence }}</h4>        
+        </div>
+      </div>
+    </div>
+<div class="row">
+    <div class="col-md-12 col-xl-4">
+        <div class="cards">        
+          <div class="card-body cardfor">
+          <p class="card-text text-center" style="font-size:2.7rem;"><i class="fas fa-address-card"></i> Commission Agence </p>          
+          <h4 class="card-title text-center">{{ commi|floatformat:2 }} €</h4>        
+          </div>
+        </div>
+    </div>
+    <div class="col-md-12 col-xl-4">
+      <div class="cards">        
+        <div class="card-body cardfive">
+          <p class="card-text text-center" style="font-size:2.8rem;"><i class="fas fa-user"></i> Retard </p>          
+          <h4 class="card-title text-center">{{ retard }}</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 col-xl-4">
+      <div class="cards">        
+        <div class="card-body cardsix">
+          <p class="card-text text-center" style="font-size:2.8rem;"><i class="fas fa-project-diagram"></i> Total du mois </p>          
+          <h4 class="card-title text-center">{{ total }} €</h4>        
+        </div>
+      </div>
+    </div>
+    <div class="top3">
+    <div class="row">
+        <div class='col-6'>
+            <h5>Loyer par  locataire</h5>
+        <div class="graph">{% autoescape off %} {{ graph }} {% endautoescape %}</div> 
+        </div>
+        <div class='col-6'>
+            <h5>Le temps de la location</h5>
+        <div class="graph">{% autoescape off %} {{ graph1 }} {% endautoescape %}</div> 
+        </div>
+    <div>
+
+</div>
+{% endblock content %}  

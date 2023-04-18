@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load custom_tag %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'formulaire.css' %}"> 
+{% endblock head %}
+
+{% block title %}Modifier{% endblock title %}
+
+{% block content %}
+<div class="top2"> 
+    <div class="row">
+        <div class="col-6">
+            <form method ="POST" action="{% url 'valide' pk=appartement.id %}">             
+                {% csrf_token %}                
+                    {{form.as_p}}                  
+                <p><button type="submit" value="submit" class="btn btn-dark" post="{% url 'valide' pk=appartement.id %}"> Ajouter</button>
+                <a hx-target="#page" hx-push-url="true" hx-get="{% url 'index' %}"class="btn btnr btn-dark">Retour</a></p>   
+            </form> 
+        </div>  
+        <div class="col-6" >
+        <img src="{% static 'tour.jpg' %}" class="photo">
+        </div>    
+    </div> 
+</div>
+{% endblock content %}

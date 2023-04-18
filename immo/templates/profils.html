@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load custom_tag %}
+{% load static %}
+
+{% block head %}    
+    <link rel="stylesheet" href="{% static 'profils.css' %}"> 
+{% endblock head %}
+
+{% block title%}Profils </title>{% endblock %}
+{% block content %}
+<div class="top1">
+    <div class="contenaire">
+        <div class="row">
+            <div class="col-6 profil">
+            <p><span>Contrat :</span>{{ locataire.user.Nbcontrat }}</p>
+            <p><span>Nom :</span>{{ locataire.user.nom|upper }}</p>
+            <p><span>Prenom:</span>{{ locataire.user.prenom }}</p>
+            <p><span>Email :</span>{{ locataire.user.email }}</p>
+            <p><span>Numeros :</span>{{ locataire.user.numberPhone|phoneNumber }}</p>
+            <br>
+            <h3>Adresse</h3>
+            <hr>
+            <p><span>Adresse</span>{{ locataire.numeros }} {{ locataire.adresse.nom_voie }}</p>
+            <p><span>Ville:</span>{{ locataire.adresse.nom_commune }}</p>
+            <p><span>Code Postal:</span>{{ locataire.adresse.code_postal}}</p>           
+            </div>
+            <div class="col-2"></div>
+            <div class="col-4">
+                <img src="{{ locataire.user.photo.url }}" class="photo" alt="{ loca.photo.url }}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">             
+            <h3>Appartement</h3>
+            <hr>
+            <p><span>Piece:</span>{{ locataire.piece }}</p>
+            <p><span>Sanitaire:</span>{{ locataire.sanitaire }}</p>
+            <p><span>Etat:</span>{{ locataire.etat}}</p>
+            <p><span>Obersvation:</span>{{ locataire.observation}}</p>
+            <p><span>Agence:</span>{% if  locataire.agence %} oui {% else %} non {% endif %}</p>
+            <br>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-5 limite">  
+            <h3>Paiement</h3>
+            <hr>
+            <p><span>Caution :</span>{{ locataire.caution }} €</p>
+            <p><span>Allocation :</span>{{ locataire.allocation }} €</p>
+            <p><span>Charges :</span>{{ locataire.charges }} €</p>
+            <p><span>Loyer :</span>{{ loyer }} €</p>           
+            <p><button class="btn btn-primary" hx-target="#page"  hx-push-url="true" hx-get="{% url 'quitance' pk=locataire.id %}"> Voir la quitance</button></p>                 
+            </div>           
+       </div>
+{% endblock content %}

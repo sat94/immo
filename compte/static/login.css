@@ -1,0 +1,73 @@
+body{
+    color: white;   
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-image: url(connexion.jpg);     
+    background-repeat: no-repeat;
+    background-size: cover; 
+    overflow-x: hidden;
+}
+.top{
+    margin-top: 340px;   
+}
+h4{
+    padding-top: 50px;
+    font-size: 30px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    color: #ffffff;
+    padding-bottom: 50px;
+}
+.bloc{
+    text-align: center;
+    width: 380px;
+    height: auto;
+    background: #203d8e74;  
+    border: 1px solid black; 
+    margin-top: 200px; 
+    margin-left: 40%;               
+}
+.text{     
+    font-family: 'Times New Roman', Times, serif;
+    color:white!important;
+    font-weight: lighter;
+    font-size: 22px;
+    position: relative;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;    
+}  
+
+.btnr{
+    margin-top: 50px;
+    background-color: rgb(58, 58, 64)!important;    
+    color: white!important;   
+    margin-bottom: 60px;    
+}    
+.btnr:hover{
+    border: 1px solid ;
+    color: #1f8ea5!important;
+    background-color: black!important;
+}
+.form{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.align {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: lighter;
+    font-size: 22px;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;    
+}
+.label{
+    padding-top: 5px;
+}
+h1{
+    background-color: white;
+    color: white;
+    justify-content: center;
+}

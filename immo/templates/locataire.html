@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load custom_tag %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'locataire.css' %}"> 
+{% endblock head %}
+
+{% block title%}Locataire </title>{% endblock %}
+{% block content %}
+<div id="tap">
+<div class="top1">
+  <div class="row">
+    {% for locataire in locataires %}
+     <div class="col-md-3 carte" >
+        <div class="card">
+                <div class="style-dance">
+                    <img src="{{ locataire.user.photo.url }}" class="photo" alt="{ loca.photo.url }}">
+                </div>
+                <div class="card-body text-center">
+                    <h3 class="card-title"> {{ locataire.user.prenom }} {{ locataire.user.nom|upper }}</h3>
+                    <hr>
+                    <p class="card-text">{{ locataire.numeros }} {{ locataire.adresse.nom_voie }}</p>
+                    <p class="card-adresse ">{{ locataire.adresse.code_postal }} {{ locataire.adresse.nom_commune }}</p>
+                    <hr>
+                    <p class="card-text"><i class="far fa-id-badge me-2"></i>{{ locataire.date }}</p>
+                    <p class="card-adresse"><i class="fas fa-mobile-alt me-2"></i>{{ locataire.user.numberPhone|phoneNumber }}</p>
+                    <button class="btn btn-dark" hx-target="#page"  hx-push-url="true" hx-get="{% url 'appart' pk=locataire.id %}"> Voir le profil</button>  
+                </div>
+        </div>            
+    </div>
+{% endfor %}
+<nav id="boucle">
+    <ul class="pagination justify-content-center">        
+        {% if locataires.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="{% url 'locataire' %}?page={{ locataires.previous_page_number }}">
+                   <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        {% endif %}
+        {% if locataires.paginator.num_pages > 1 %}
+        <li class='page-item'><p class="base" >Page {{ locataires.number }} sur {{ locataires.paginator.num_pages }}</p></li>
+        {% endif %}
+        {% if locataires.has_next %}
+            <li class="page-item">
+                <a class="page-link"  href="{% url 'locataire' %}?page={{ locataires.next_page_number }}">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav> 
+{% endif %}
+{% endblock content %}
