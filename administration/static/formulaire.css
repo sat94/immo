@@ -1,0 +1,19 @@
+body{
+    background-color: #1c326bee;
+    color: white;
+    font-size: 16px;
+    font-family:'Times New Roman', Times, serif
+}
+
+p{
+    margin: 30 100 0 50;
+    display: flex;
+    justify-content:space-between;
+}
+.top2{
+    margin-top: 95px;
+}
+.photo{
+    position: fixed;
+    height: 90vh;
+}

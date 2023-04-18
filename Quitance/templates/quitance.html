@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load custom_tag %}
+{% load static %}
+
+{% block head %}    
+    <link rel="stylesheet" href="{% static 'quitance.css' %}"> 
+{% endblock head %}
+
+{% block content %}
+<div class="container page top1">
+<div class="row">
+    <div class="col-4">
+        <h4><img src="{% static 'logo.png' %}" height="150" alt="logo">IMMO</h4>
+        <div class="encadrer1">
+        <p>Ref :{{ locataire.user.Nbcontrat }}</p>
+        <p>{{ locataire.user.nom|upper }} {{ locataire.user.prenom }}</p>
+        <p>Email :{{ locataire.user.email }}</p>
+        <p>Tel : {{ locataire.user.numberPhone|phoneNumber }}</p>
+        </div>
+        <br>
+    </div>
+</div>
+<div class="row">
+    <div class="col-8"></div>
+    <div class="col-4 encadrer">
+        <h3>Adresse du locataire</h3>
+        <p>{{ locataire.numeros }} , {{ locataire.adresse.nom_voie }} </p>
+        <p>{{ locataire.adresse.code_postal }} {{ locataire.adresse.nom_commune|upper }}</p>
+    </div>
+</div>
+<div class="row">
+    <H1>Quittance de Loyer</H1>
+</div>
+<div class="row tab">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col"><h3><span>Libellé</span></h3></th>  
+                <th scope="col"><h3><span>Montant</span></h3></th> 
+            </tr> 
+        </thead> 
+        <tbody>
+            <th scope="row"><h3>Allocation</h3></th>
+            <td id="color">{{ locataire.allocation }} €</td>    
+        </tbody>
+        <tbody>
+            <th scope="row"><h3>Charges</h3></th>
+            <td id="color">{{ locataire.charges }} €</td>    
+        </tbody>        
+        <tbody>
+            <th scope="row" id="color"><h3>Loyer</h3></th>
+            <td id="color">{{ locataire.loyer }} €</td>    
+        </tbody>
+        {% if locataire.agence %}
+        <tbody>
+            <th scope="row" id="color"><h3>Agence</h3></th>
+            <td id="color">oui</td>
+        </tbody>
+        {% endif %}
+        <tbody>
+            <th scope="row" id="color"><h3><span>TOTAL</span></h3></th>
+            <td id="color">{{ Total }} €</td>    
+        </tbody>
+    </table>
+    <div class="row">
+        <p class='table tab'>Le paiement de la présente n'emporte pas présomption de paiement des termes antérieurs. Cette quittance ou ce reçu annule tous les reçus qui auraient pu être donnés pour acompte versé sur le présent terme. 
+            En cas de congé précédemment donné, cette quittance ou ce reçu représenterait l'indemnité d'occupation et ne saurait être considéré comme un titre d'occupation. Sous réserve d'encaissement.</p>
+    </div>
+    <div class="row">
+        <div class="col-8"></div>
+        <div class="col-4 signature">
+        <p>le {{ date }}</p>
+        <p>à MAISON ALFORT</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8"></div>
+        <div class="col-4 signature1">
+        <p><img src="{% static 'signature.png' %}" height="150" alt="logo"></p>
+        </div>
+    </div>
+</div>
+</div>
+<p><button class="btn btn-primary" hx-get="{% url 'send_email' pk=locataire.id %}">Envoyer un email</button></p>
+
+
+
+
+{% endblock content %}  

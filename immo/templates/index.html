@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}Index{% endblock title %}
+
+{% block content %}
+
+<div class="container img-fluid">  
+        <video src="{% static 'video.mp4' %}" autoplay muted loop class="couverture"></video> 
+</div>
+<div class="top">
+        <h1><img src="{% static 'logo.png' %}" class="logo"> Agence de location</h1>
+        <br>
+</div>
+<section>
+        <div class="container">  
+                <div class="col-12">
+                <h2>Qui sommes nous?</h1>
+                <br>
+                <p>Une agence immobilière est une entreprise qui gère les transactions immobilières de ses clients, 
+                        de la mise en vente de biens à la gestion locative, en passant par l’estimation ou la recherche de biens. 
+                        Ses collaborateurs sont généralement des agents immobiliers ou des agents commerciaux.</p> 
+                        <p>L’agence immobilière fait le lien entre les offreurs de biens (vendeurs) et les demandeurs de biens 
+                        (les acheteurs ou les locataires).</p>
+                <p>Les particuliers comme les professionnels peuvent faire appel aux services d’une agence immobilière.</p>
+                <p>Une agence immobilière peut s’occuper de différents types de transactions immobilières : l’estimation d’un bien immobilier (appartement, maison, local commercial… généralement gratuite), la mise en vente ou un location d’un bien (sur laquelle elle se rémunère via des frais d’agence), la gestion locative (accompagnement des démarches administratives lors de la location d’un bien, rémunérée sur les sommes encaissées) ou encore la recherche de biens, rémunérée en commission.</p>
+                <p>Une agence immobilière est mandatée, c’est à dire que le client lui confie la gestion d’un bien (en vente par exemple) de manière exclusive ou semi-exclusive. L’agence en charge de vendre le bien peut dans ces cas respectifs être la seule habilitée à le faire ou « partager la vente » avec d’autres agences.</p>
+                <p>Immo fait partis de la filière Infeco. Entreprise qui allie informatique et écologie.</p>
+                </div>
+        </div>
+</section>
+{% endblock content %}

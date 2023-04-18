@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load custom_tag %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'formulaire.css' %}"> 
+{% endblock head %}
+
+{% block title %}Ajouter{% endblock title %}
+
+{% block content %}
+<div class="top2"> 
+    <div class="row">
+        <div class="col-6">
+            <form method ="POST">
+                {% include 'messages.html' %}    
+                {% csrf_token %}                
+                    {{form.as_p}}
+                <p><button class="btn btn-dark" post="{% url 'ajouter_appartement' %}"> Ajouter</button></p>  
+            </form> 
+        </div>  
+        <div class="col-6" >
+        <img src="{% static 'tour.jpg' %}" class="photo">
+        </div>    
+    </div> 
+</div>
+{% endblock content %}

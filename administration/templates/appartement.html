@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load custom_tag %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'admisnistration.css' %}"> 
+{% endblock head %}
+
+{% block title %}Appartement{% endblock title %}
+
+{% block content %}
+<div id="tap">      
+<div class="top1">    
+    <div class="row">
+        <div class="col-10">            
+            <form method="post" class="d-flex recherche">            
+                <input class=" me-2" name="cherche" placeholder=" Recherche">
+                <button class="btn btn-outline-dark" hx-swap="outerHTML" hx-target="#tap"  hx-post="{% url 'cherche_appartement' %}" type="submit" id="color">Recherche</button>            
+            </form>
+        </div>     
+        <div class="col-2">
+            <button class="btn btn-primary" hx-target="#page"  hx-push-url="true" hx-get="{% url 'ajouter_appartement' %}"> Ajouter un appartement</button>
+        </div>
+    </div>    
+    <table class="table  table-bordered">
+    <thead>
+        <tr>  
+        <th scope="col"><h5 id="color"><span>#</span></h5></th>       
+        <th scope="col"><h5 id="color"><span>Nom</span></h5></th>
+        <th scope="col"><h5 id="color"><span>Prénom</span></h5></th>
+        <th scope="col"><h5 id="color"><span>Piece</span></h5></th>   
+        <th scope="col"><h5 id="color"><span>Sanitaire</span></h5></th>
+        <th scope="col"><h5 id="color"><span>Etat</span></h5></th>    
+        <th scope="col"><h5 id="color"><span>Obvervation</span></h5></th>
+        <th scope="col"><h5 id="color"><span>Depuis le</span></h5></th>
+        <th scope="col"><h5 id="color"><span>Agence</span></h5></th>
+        <th scope="col"><h5 id="color"><span>Modifier</span></h5></th>
+        <th scope="col"><h5 id="color"><span>Supprimer</span></h5></th> 
+
+        </tr> 
+    </thead> 
+    <tbody>
+        {% for locataire in locataires %}        
+        <tr>
+          <th scope="row" id="color">{{ locataire.user.id }}</th>            
+          <td id="color"><a hx-target="#page"  hx-push-url="true" hx-get="{% url 'appart' pk=locataire.id %}">{{ locataire.user.nom|upper }}</a></td>
+          <td id="color"><a hx-target="#page"  hx-push-url="true" hx-get="{% url 'appart' pk=locataire.id %}">{{ locataire.user.prenom }}</a></td>
+          <td id="color">{{ locataire.piece }} </td>
+          <td id="color">{{ locataire.sanitaire }}</td>  
+          <td id="color">{{ locataire.etat }}</td>
+          <td id="color">{{ locataire.observation}}</td>
+          <td id="color">{{ locataire.date }}</td>
+          <td id="color">{% if  locataire.agence %} Oui {% else %} Non {% endif %}</td>
+          <td id="color"> <button class="btn btn-success" hx-target="#page"  hx-push-url="true" hx-get="{% url 'modif_locataire' pk=locataire.id %}"> Modifier</button>  </td> 
+          <td id="color"> <a class="btn btn-danger" href="{% url 'delete_appartement' pk=locataire.id %}"> Supprimer</a>  </td>  
+        </tr>    
+        {% endfor %}
+    </tbody>
+</table>    
+    <nav id="boucle">
+        <ul class="pagination justify-content-center">        
+            {% if locataires.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" hx-swap="outerHTML" hx-push-url="true" hx-target="#tap" hx-get="{% url 'appartement' %}?page={{ locataires.previous_page_number }}">
+                       <span id="fleche" aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            {% endif %}
+            {% if locataires.paginator.num_pages > 1 %}
+            <li class='page-item'><p class="base" >Page {{ locataires.number }} sur {{ locataires.paginator.num_pages }}</p></li>
+            {% endif %}
+            {% if locataires.has_next %}
+                <li class="page-item">
+                    <a class="page-link" hx-swap="outerHTML" hx-push-url="true" hx-target="#tap" hx-get="{% url 'appartement' %}?page={{ locataires.next_page_number }}">
+                        <span id="fleche" aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav> 
+    </div>
+{% endif %}  
+{% endblock content %}
+    

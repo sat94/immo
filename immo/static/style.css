@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+body{
+    background-color: #ffffff;
+    font-family: 'Times New Roman', Times, serif;  
+    overflow-x: hidden;
+}
+.couverture{  
+    width: 100vw;
+    height: 100vh;   
+    object-fit: cover;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%); 
+    z-index: -10;    
+}
+
+a.navbar-brand{
+    color: rgb(241, 235, 235)!important;
+    font-size: 35px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+  }
+  
+.navbar .nav-item .nav-link,
+.dropdown-menu .dropdown-item {
+    font-size: 20px;
+    font-family: roboco;      
+    color: rgba(255, 255, 255, 0.644)!important;
+}  
+
+.navbar .nav-item .nav-link:hover,
+.dropdown-menu .dropdown-item:hover,
+.navbar .nav-item .nav-link.active,
+.dropdown .dropdown-menu .dropdown-item.active {
+    color: #ffffff!important; 
+    border: #07754d 2px solid;
+} 
+
+.navbar button {
+    background-color: rgba(255, 255, 255, 0.644)!important;
+}
+  
+.navbar {		
+    background: #0b1a42d9;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-bottom: 2px solid rgb(0, 0, 0);    
+}
+  
+#navbarDropdown{   
+    color: rgba(255, 255, 255, 0.644);  
+    font-size: 22px;
+}
+  
+.top{
+    margin-top: 250px; 
+    margin-left: 30%; 
+}
+
+H1{
+    background-color: #0b234288;
+    margin-right: 40%;
+    text-align: center;
+    font: 1em sans-serif;    
+    font-style: italic;
+    color: #ffffff;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 4rem;     
+} 
+.logo{
+    padding-right: 200px;
+    width: 105vh;
+    height: 80vh;
+}
+section{
+    margin-top: 150px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    z-index: 1;
+    padding-bottom: 300px;
+}
+.para{
+    position: absolute;
+    left: 50px;
+}
+h2{
+    padding-top: 50px;
+    font-size: 4rem;
+    color: white;
+    background-color: white;
+    text-align: center;
+    text-shadow: 0 0 5px black;;
+}
